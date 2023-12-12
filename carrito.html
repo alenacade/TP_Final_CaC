@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/carrito-estilos.css">
+    <link rel="shortcut icon" href="./img/icon/iconomate.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lobster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <title>Matecito</title>
+</head>
+<body>
+    <header class="header" id="header">
+        <div class="logo">Matecito</div>
+        <input type="checkbox" id="toggle">
+        <label for="toggle"><img class="menu" src="./img/icon/bars-solid.svg" alt="menu"></label>
+
+        <nav class="navigation mt-2" style="height: 75px;">
+
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="club_matecito.html" >Club Matecito</a></li>
+                <li><a href="carrito.html">Productos</a></li>
+                <li><a href="./login.html">Log in Admin</a></li>
+            </ul>
+        </nav>
+
+        
+               
+              
+          
+
+    </header>
+
+    <div class="banner">
+        <h1 class="titulo-carrito fst-italic">Nuestros Productos</h1>
+    </div>
+    
+    <main>
+        <div id="app">
+          <div v-if="error">
+            <p>Lo sentimos , ........</p>
+          </div>
+          <div v-else>
+            <section v-if="cargando">
+              <div class="spinner-border"></div>
+              <p>Cargando .....</p>
+            </section>
+            <section v-else>
+              <div class="container  d-flex flex-wrap  justify-content-around">
+                <div class="card" v-for="elemento in productos" style="width:260px; margin-top: 10px;">
+                  <img class="card-img-top" style="height: 260px;" :src="elemento.imagen" :alt="elemento.nombre">
+                  <div class="card-body bg-gradient">
+                    <p class="card-title">{{elemento.nombre}}</p>
+                    <p class="card-text">Precio: {{elemento.precio}}</p>
+                    <p class="card-text">Stock: {{elemento.stock}}</p>
+                    <button  v-on:click="comprar(elemento.id)" class="btn btn-info text-white">Comprar</button>
+                    <button class="fas fa-shopping-cart btn btn-dark text-white" style="margin-left: 50px; height: 40px; width: 60px;">+</button>
+                  </div>
+                </div>
+            </section>
+          </div>
+        </div>
+        </div>
+      </main>
+
+    
+        
+        
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-row">
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="footer-links">
+                            <h4>CONTACTO</h4>
+                                <ul>
+                                    <li><a href="https://www.gmail.com/"> <img width="40px" src="./img/icon/mail.png"
+                                                alt="">matecito@gmail.com</a> <br></li>
+                                    <li><a href="a"> <img width="40px" src="./img/icon/tel.png" alt="">1122334455</a><br></li>
+                                    <li><a href="a"> <img width="40px" src="./img/icon/ubicacion.png" alt="">Av.siempreviva 123</a></li>
+                                </ul>
+                        </div>
+                    </div>
+                        <div class="footer-links">
+                            <h4>MEDIOS DE PAGO</h4>
+                                <ul>
+                                    <img width="50px" height="27px" src="./img/icon/visa1.jpg" alt=""><br>
+                                    <img style="margin-top: 7px;" width="50px" src="./img/icon/master1.jpg" alt=""><br>
+                                    <img style="margin-top: 7px;" width="50px" src="./img/icon/mercadopago.png" alt="">
+                                </ul>
+                        </div>
+                            <div class="footer-links">
+                                <h4>SIGUENOS</h4>
+                                <div class="social-links">
+                                    <ul>
+                                        <a href="https://www.facebook.com/?locale=es_LA"><i class="fab fa-facebook-f "></i></a>
+                                        <a href="https://www.instagram.com/"><i class="fab fa-instagram "></i></a>
+                                        <a href="https://ar.linkedin.com/"><i class="fab fa-linkedin "></i></a>
+                                        <a href="https://twitter.com/?lang=es"><i class="fab fa-twitter"></i></a>
+                                    </ul>
+                                </div>
+                            </div>
+                </div>
+                        <p class="firma">Copyright MATECITO.©2023</p>
+            </div>
+        </footer>
+
+        
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+    </script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script><!--Link de VUE-->
+    
+    <script src="./js/compra-productos.js"></script>
+    <!-- <script src="./js/main.js"></script> -->
+
+</body>
